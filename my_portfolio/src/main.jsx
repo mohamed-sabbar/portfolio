@@ -14,6 +14,9 @@ createRoot(document.getElementById('root')).render(
     <NavBar/>
     <FirstArticle/>
     <Aboutme/>
+    <Skills/>
+    <Contactme/>
+    <Footer/>
     
 
   </StrictMode>,
