@@ -1,4 +1,5 @@
 import { StrictMode } from 'react'
+import { Element } from 'react-scroll';
 import { createRoot } from 'react-dom/client'
 import NavBar from './NavBar.jsx'
 import FirstArticle from './FirstArticle.jsx'
@@ -14,12 +15,25 @@ createRoot(document.getElementById('root')).render(
  
     <NavBar/>
     <FirstArticle/>
-    <Aboutme/>
-    <Skills/>
-    <Education/>
-    <Projects/>
+    <Element name='about'>
+      <Aboutme/>
+    </Element>
+    <Element name='skills'>
+      <Skills/>
+    </Element>
     
-    <Contactme/>
+    <Element name='education'>
+      <Education/>
+    </Element>
+    
+    <Element name='projects'>
+      <Projects/>
+    </Element>
+    
+    <Element name='contact-me'>
+      <Contactme/>
+    </Element>
+    
     
     <Footer/>
     

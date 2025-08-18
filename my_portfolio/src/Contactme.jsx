@@ -1,10 +1,33 @@
 import { useState } from "react";
-
+import emailjs from "emailjs-com";
 function Contactme() {
   const [isHovered, setIsHovered] = useState(false);
+  const [FormData,SetFormData]=useState({
+    name:"",
+    email:"",
+    message:""
+}
+  )
+  const changeForum=(e)=>{
+    SetFormData({...FormData,[e.target.name]:e.target.value})
+    
+  }
 
-  const handleClick = () => {
-    alert("Message sent!");
+  const handleClick = (e) => {
+   e.preventDefault();
+   emailjs.send(
+    "service_vrkshyg",
+    "template_5y19un2",
+    FormData,
+    "Bmxk0NUJr0I8RA29r"
+   ).then(() => {
+      alert("Message envoyé avec succès !");
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(err)
+      
+    });
     
   };
 
@@ -64,6 +87,9 @@ function Contactme() {
               placeholder="Your name"
               className="w-full bg-transparent placeholder:text-gray-400 outline-none"
               aria-label="Your name"
+              name="name"
+              value={FormData.name}
+              onChange={changeForum}
             />
           </div>
 
@@ -73,6 +99,9 @@ function Contactme() {
               placeholder="Your email"
               className="w-full bg-transparent placeholder:text-gray-400 outline-none"
               aria-label="Your email"
+              name="email"
+              value={FormData.email}
+              onChange={changeForum}
             />
           </div>
 
@@ -82,6 +111,9 @@ function Contactme() {
               placeholder="Your message"
               className="w-full bg-transparent placeholder:text-gray-400 outline-none resize-none"
               aria-label="Your message"
+              name="message"
+              value={FormData.message}
+              onChange={changeForum}
             ></textarea>
           </div>
 
@@ -91,6 +123,7 @@ function Contactme() {
             onMouseLeave={() => setIsHovered(false)}
             className="flex items-center gap-2 px-6 py-3 rounded-full border border-black text-black font-semibold transition duration-300 ease-in-out hover:bg-black hover:text-white hover:scale-105"
             onClick={handleClick}
+            
           >
             <img
               src={isHovered ? "/pictures/send_white.png" : "/pictures/send.png"}

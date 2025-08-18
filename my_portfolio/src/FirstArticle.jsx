@@ -5,6 +5,13 @@ export default function FirstArcticle() {
 a Data and Software Engineering student,
 and this is my portfolio.`;
 
+function ScrollDown(){
+  window.scrollBy({
+    top:650,
+    behavior:'smooth'
+  })
+}
+
   const [displayedText, setDisplayedText] = useState('');
 
   useEffect(() => {
@@ -50,7 +57,7 @@ and this is my portfolio.`;
         </a>
       </div>
 
-      <div className="group flex items-center space-x-3 mt-16 mr-10 cursor-pointer">
+      <div className="group flex items-center space-x-3 mt-16 mr-10 cursor-pointer" onClick={ScrollDown}>
   <img src="/pictures/mouse.png" className="w-8 h-8" alt="Mouse Icon" />
   <h1 className="text-lg text-gray-700 group-hover:text-black transition-colors duration-300">
     Scroll down
@@ -58,7 +65,7 @@ and this is my portfolio.`;
   <img
     src="/pictures/down.png"
     className="w-8 h-8 transition-all duration-300 transform group-hover:translate-y-2"
-    alt="Down Arrow"
+    alt="Down Arrow" 
   />
 </div>
 
