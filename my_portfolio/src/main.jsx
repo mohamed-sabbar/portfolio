@@ -12,9 +12,14 @@ import Footer from './Footer.jsx'
 import './index.css' 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
- 
+    
     <NavBar/>
+    
+  <Element name='firstarticle'>
+    
     <FirstArticle/>
+     </Element>
+    
     <Element name='about'>
       <Aboutme/>
     </Element>

@@ -1,13 +1,30 @@
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
+import 'animate.css';
+
 export default function Education() {
+  const { ref, inView } = useInView({
+    triggerOnce: true,  // l'animation se déclenche une seule fois
+    threshold: 0.5,     // 50% visible pour déclencher
+  });
+
   return (
-    <div>
+    <div
+      ref={ref}
+      className={`py-12 transition-opacity duration-1000 ${
+        inView ? 'animate__animated animate__fadeInUp opacity-100' : 'opacity-0'
+      }`}
+      style={{ animationDuration: '1.5s' }} // ralentit un peu l'animation
+    >
       <div className="mt-14 text-center">
         <p className="text-4xl font-bold text-gray-800">Education</p>
       </div>
 
       <div className="flex flex-col items-center mt-10">
-        {/* Événement 1 */}
+        {/* Ligne verticale */}
         <div className="w-px h-36 bg-black"></div>
+
+        {/* Événement 1 */}
         <div className="flex flex-col items-center">
           <div className="w-3 h-3 bg-black rounded-full"></div>
           <div className="text-center mt-2 mb-6">
@@ -17,7 +34,7 @@ export default function Education() {
           </div>
         </div>
 
-        {/* Ligne */}
+        {/* Ligne verticale */}
         <div className="w-px h-36 bg-black"></div>
 
         {/* Événement 2 */}
@@ -30,7 +47,7 @@ export default function Education() {
           </div>
         </div>
 
-        {/* Ligne */}
+        {/* Ligne verticale */}
         <div className="w-px h-36 bg-black"></div>
 
         {/* Événement 3 */}

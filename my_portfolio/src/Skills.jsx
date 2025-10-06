@@ -1,6 +1,13 @@
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
+import 'animate.css';
 
 export default function Skills() {
+  const { ref, inView } = useInView({
+    triggerOnce: true, // animation une seule fois
+    threshold: 0.2,    // 20% visible pour déclencher
+  });
+
   const skillData = [
     {
       title: 'Languages',
@@ -10,7 +17,7 @@ export default function Skills() {
     {
       title: 'Frameworks',
       icon: '/pictures/frameworks.png',
-      items: ['Flask', 'JEE(Spring, Spring Boot)', 'Tailwind CSS', 'React JS'],
+      items: ['Flask', 'JEE(Spring, Spring Boot)', 'Tailwind CSS', 'React JS','LangChain'],
     },
     {
       title: 'Big Data',
@@ -35,11 +42,16 @@ export default function Skills() {
   ];
 
   return (
-    <div className="py-12 px-6 ">
-      
+    <div
+      ref={ref}
+      className={`py-12 px-6 
+        ${inView ? 'animate__animated animate__fadeInUp animate__slow' : 'opacity-0'}`}
+      style={{ animationDuration: '1.5s' }} // tu peux augmenter la durée pour ralentir
+    >
       <div className="flex justify-center mb-12">
         <h1 className="text-4xl font-bold text-gray-800">Skills</h1>
       </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {skillData.map((category, idx) => (
           <div

@@ -15,15 +15,9 @@ export default function Footer() {
 
         
         <div className="flex space-x-6">
+         
           <a
-            href="mailto:tonemail@gmail.com"
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition"
-            aria-label="Email"
-          >
-            Email
-          </a>
-          <a
-            href="https://www.linkedin.com/in/tonprofil"
+            href="https://www.linkedin.com/in/mohamed-sabbar-463495294/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-600 dark:hover:text-blue-400 transition"
@@ -32,7 +26,7 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href="https://github.com/tonprofil"
+            href="https://github.com/mohamed-sabbar"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-600 dark:hover:text-blue-400 transition"

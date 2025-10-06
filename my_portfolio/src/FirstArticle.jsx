@@ -1,16 +1,24 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-scroll';
+import { useInView } from 'react-intersection-observer';
+import 'animate.css';
 
 export default function FirstArcticle() {
-  const fullText = `Heello, I'm Mohamed Sabbar,
+  const { ref, inView } = useInView({
+    triggerOnce: true, // animation une seule fois
+    threshold: 0.5,    // 50% visible pour déclencher
+  });
+
+  const fullText = `HHello, I'm Mohamed Sabbar,
 a Data and Software Engineering student,
 and this is my portfolio.`;
 
-function ScrollDown(){
-  window.scrollBy({
-    top:650,
-    behavior:'smooth'
-  })
-}
+  function ScrollDown(){
+    window.scrollBy({
+      top:650,
+      behavior:'smooth'
+    });
+  }
 
   const [displayedText, setDisplayedText] = useState('');
 
@@ -23,52 +31,63 @@ function ScrollDown(){
       } else {
         clearInterval(interval);
       }
-    }, 40);
+    }, 40); // vitesse de typewriting
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="mt-24 ml-28">
-      <pre className="text-4xl font-mono text-black whitespace-pre-line leading-relaxed">
-        {displayedText}
-        <span className="border-r-4 border-black animate-blink inline-block h-10 align-middle"></span>
-      </pre>
+    <div 
+      ref={ref} 
+      className={`py-12 opacity-0 ${inView ? 'animate__animated animate__fadeInUp' : ''}`}
+      style={{ animationDuration: '1.5s' }} // animation plus lente
+    >
+      <div className="mt-24 ml-28">
+        <pre className="text-4xl font-mono text-black whitespace-pre-line leading-relaxed">
+          {displayedText}
+          <span className="border-r-4 border-black animate-blink inline-block h-10 align-middle"></span>
+        </pre>
 
-      <a href="#" className="text-xl text-blue-600 no-underline mt-4 inline-block">
-        View Projects
-      </a>
+        <Link
+          to="projects"
+          smooth={true}
+          duration={500}
+          offset={-80}
+          className="text-xl text-blue-600 no-underline mt-4 inline-block cursor-pointer"
+        >
+          View Projects
+        </Link>
 
-      {/* Social Icons */}
-      <div className="flex space-x-4 mt-4">
-        <a
-          href="https://www.linkedin.com/in/ton-profil"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/pictures/linkedin.png" alt="LinkedIn" className="w-8 h-8" />
-        </a>
-        <a
-          href="https://github.com/ton-utilisateur"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/pictures/github.png" alt="GitHub" className="w-8 h-8" />
-        </a>
+        {/* Social Icons */}
+        <div className="flex space-x-4 mt-4">
+          <a
+            href="https://www.linkedin.com/in/mohamed-sabbar-463495294/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/pictures/linkedin.png" alt="LinkedIn" className="w-8 h-8" />
+          </a>
+          <a
+            href="https://github.com/mohamed-sabbar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/pictures/github.png" alt="GitHub" className="w-8 h-8" />
+          </a>
+        </div>
+
+        <div className="group flex items-center space-x-3 mt-16 mr-10 cursor-pointer" onClick={ScrollDown}>
+          <img src="/pictures/mouse.png" className="w-8 h-8" alt="Mouse Icon" />
+          <h1 className="text-lg text-gray-700 group-hover:text-black transition-colors duration-300">
+            Scroll down
+          </h1>
+          <img
+            src="/pictures/down.png"
+            className="w-8 h-8 transition-all duration-300 transform group-hover:translate-y-2"
+            alt="Down Arrow" 
+          />
+        </div>
       </div>
-
-      <div className="group flex items-center space-x-3 mt-16 mr-10 cursor-pointer" onClick={ScrollDown}>
-  <img src="/pictures/mouse.png" className="w-8 h-8" alt="Mouse Icon" />
-  <h1 className="text-lg text-gray-700 group-hover:text-black transition-colors duration-300">
-    Scroll down
-  </h1>
-  <img
-    src="/pictures/down.png"
-    className="w-8 h-8 transition-all duration-300 transform group-hover:translate-y-2"
-    alt="Down Arrow" 
-  />
-</div>
-
     </div>
   );
 }
