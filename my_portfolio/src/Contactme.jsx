@@ -12,8 +12,8 @@ function Contactme() {
   });
 
   const { ref, inView } = useInView({
-    triggerOnce: true, // animation seulement la première fois
-    threshold: 0.5,    // 50% visible pour déclencher
+    triggerOnce: true,
+    threshold: 0.5,
   });
 
   const changeForum = (e) => {
@@ -40,20 +40,20 @@ function Contactme() {
   return (
     <div
       ref={ref}
-      className={`py-20 px-6 md:px-20 bg-[#f5f0e8] min-h-screen transition-opacity duration-1000 ${
+      className={`py-20 px-4 sm:px-6 md:px-20 bg-[#f5f0e8] min-h-screen transition-opacity duration-1000 ${
         inView ? "animate__animated animate__fadeInUp opacity-100" : "opacity-0"
       }`}
-      style={{ animationDuration: '1.5s' }} // ralentit un peu l'animation
+      style={{ animationDuration: '1.5s' }}
     >
-      <form className="max-w-6xl mx-auto rounded-2xl p-10 flex flex-col md:flex-row gap-12">
-        <div className="flex-1 items-center space-y-8">
-          <div className="flex flex-col ml-96">
+      <form className="max-w-6xl mx-auto rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row gap-8 md:gap-12">
+        <div className="flex-1 flex flex-col items-center space-y-6 md:space-y-8">
+          <div className="flex flex-col items-center md:items-start">
             <h1 className="text-4xl font-bold text-gray-800">Contact Me</h1>
-            <h2 className="text-lg text-gray-500 ml-12">Get in touch</h2>
+            <h2 className="text-lg text-gray-500 mt-2 md:mt-0">Get in touch</h2>
           </div>
 
-          <div className="flex">
-            <div className="space-y-8">
+          <div className="flex flex-col md:flex-row w-full gap-6 md:gap-12">
+            <div className="flex-1 space-y-6 md:space-y-8">
               <div className="flex items-center space-x-4">
                 <img className="w-10 h-10" src="/pictures/mail.png" alt="Email icon" />
                 <div>
@@ -91,7 +91,7 @@ function Contactme() {
               </div>
             </div>
 
-            <div className="flex-1 ml-44 space-y-6">
+            <div className="flex-1 space-y-4 md:space-y-6">
               <div className="border border-black px-4 py-3 w-full">
                 <input
                   type="text"
