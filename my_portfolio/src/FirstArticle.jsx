@@ -42,7 +42,7 @@ and this is my portfolio.`;
       className={`py-12 md:py-24 px-6 md:px-20 opacity-0 ${inView ? 'animate__animated animate__fadeInUp' : ''}`}
       style={{ animationDuration: '1.5s' }}
     >
-      <div className="max-w-3xl mx-auto text-center md:text-left">
+      <div className="max-w-3xl  text-center md:text-left">
         {/* Typewriting Text */}
         <pre className="text-3xl sm:text-4xl md:text-5xl font-mono text-gray-900 whitespace-pre-line leading-relaxed">
           {displayedText}

@@ -37,7 +37,7 @@ export default function AboutMe() {
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 max-w-5xl mx-auto px-6">
         {/* Image */}
         <img
-          src="/pictures/me.png"
+          src="../pictures/me.png"
           alt="Me"
           className="w-64 sm:w-80 md:w-[350px] h-64 sm:h-80 md:h-[315px] rounded-full border border-black shadow-lg object-cover mx-auto md:mx-0 md:mr-16"
         />
