@@ -5,7 +5,7 @@ import 'animate.css';
 export default function AboutMe() {
   const { ref, inView } = useInView({
     triggerOnce: true,  // animation une seule fois
-    threshold: 0.2,     // déclenchement dès 20% visible
+    threshold: 0.5,     // 50% visible pour déclencher
   });
 
   // Fonction pour télécharger le CV
@@ -22,7 +22,9 @@ export default function AboutMe() {
     <section
       id="about"
       ref={ref}
-      className={`about-section py-16 px-4 opacity-0 ${inView ? 'animate__animated animate__fadeInUp' : ''}`}
+      className={`py-16 px-4 transition-opacity duration-1000 ${
+        inView ? 'animate__animated animate__fadeInUp opacity-100' : 'opacity-0'
+      }`}
       style={{ animationDuration: '1.5s' }}
     >
       {/* Ligne décorative */}
